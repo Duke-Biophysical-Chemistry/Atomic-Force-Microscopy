@@ -1,8 +1,0 @@
-
-
-/**
- * @author jkarnuta
- */
-class HelloWorld {
-  
-}
