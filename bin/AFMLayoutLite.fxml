@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="616.0" stylesheets="@skins.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AFMController">
+   <children>
+      <HBox prefHeight="24.0" prefWidth="600.0">
+         <children>
+            <HBox id="ButtonBar" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="ExitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" stylesheets="@skins.css" text="Exit" />
+                  <Button fx:id="ResetButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" stylesheets="@skins.css" text="Reset" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="-5.0" />
+               </padding>
+            </HBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label alignment="CENTER" text="Duke BioPhysical Chemistry Atomic Force Microscopy Viewer" textAlignment="CENTER" />
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+      <BorderPane layoutX="1.0" layoutY="41.0" prefHeight="565.0" prefWidth="616.0" AnchorPane.leftAnchor="0.0">
+         <top>
+            <FlowPane prefHeight="108.0" prefWidth="616.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="83.0" prefWidth="226.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="198.0" text="Chosen Shape for Track" />
+                        <Group>
+                           <children>
+                              <Canvas fx:id="ShapeThumbnail" height="58.0" width="121.0" />
+                           </children>
+                        </Group>
+                        <Button fx:id="ChangeShapeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="214.0" stylesheets="@skins.css" text="Change Shape" />
+                     </children>
+                  </VBox>
+                  <GridPane prefHeight="85.0" prefWidth="258.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Surface Options" GridPane.columnSpan="4" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="StartButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="130.0" styleClass="button-default" stylesheets="@skins.css" text="Start!" />
+               </children>
+            </FlowPane>
+         </top>
+         <center>
+            <StackPane fx:id="Field" prefHeight="328.0" prefWidth="616.0" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <LineChart fx:id="Chart" prefHeight="118.0" prefWidth="616.0" BorderPane.alignment="CENTER">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
