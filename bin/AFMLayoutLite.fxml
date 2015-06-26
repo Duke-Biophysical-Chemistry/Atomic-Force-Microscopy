@@ -18,8 +18,8 @@
          <children>
             <HBox id="ButtonBar" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="ExitButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" stylesheets="@skins.css" text="Exit" />
-                  <Button fx:id="ResetButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" stylesheets="@skins.css" text="Reset" />
+                  <Button fx:id="ExitButton" mnemonicParsing="false" onAction="#ExitButtonOnAction" prefHeight="25.0" prefWidth="127.0" stylesheets="@skins.css" text="Exit" />
+                  <Button fx:id="RestartButton" mnemonicParsing="false" onAction="#RestartButtonOnAction" prefHeight="23.0" prefWidth="136.0" stylesheets="@skins.css" text="Restart" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -29,7 +29,7 @@
                </padding>
             </HBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Label alignment="CENTER" text="Duke BioPhysical Chemistry Atomic Force Microscopy Viewer" textAlignment="CENTER" />
+            <Label fx:id="AFMLabel" alignment="CENTER" onMouseClicked="#CourseLabelOnMouseClick" text="Duke BioPhysical Chemistry Atomic Force Microscopy Viewer" textAlignment="CENTER" />
          </children>
          <padding>
             <Insets top="10.0" />
@@ -47,7 +47,7 @@
                               <Canvas fx:id="ShapeThumbnail" height="58.0" width="121.0" />
                            </children>
                         </Group>
-                        <Button fx:id="ChangeShapeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="214.0" stylesheets="@skins.css" text="Change Shape" />
+                        <Button fx:id="ChangeShapeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ChangeShapeButtonOnAction" prefHeight="26.0" prefWidth="214.0" stylesheets="@skins.css" text="Change Shape" />
                      </children>
                   </VBox>
                   <GridPane prefHeight="85.0" prefWidth="258.0">
@@ -67,7 +67,7 @@
                         <Label text="Surface Options" GridPane.columnSpan="4" />
                      </children>
                   </GridPane>
-                  <Button fx:id="StartButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="130.0" styleClass="button-default" stylesheets="@skins.css" text="Start!" />
+                  <Button id="button-default" fx:id="StartButton" mnemonicParsing="false" onAction="#StartButtonOnAction" prefHeight="29.0" prefWidth="130.0" stylesheets="@skins.css" text="Start!" />
                </children>
             </FlowPane>
          </top>

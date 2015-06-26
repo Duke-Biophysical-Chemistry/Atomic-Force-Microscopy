@@ -1,5 +1,6 @@
+import java.io.IOException;
+
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +16,7 @@ public class AFMMain extends Application {
 	
 	public static Stage stage;
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws IOException {
 		//load resources and set variables necessary to run the FXML loader
 		AFMMain.stage = primaryStage;
 		Font.loadFont(AFMMain.class.getResourceAsStream("expressway.ttf"), 12);	
@@ -28,11 +29,4 @@ public class AFMMain extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	
-	//Closes the stage
-	public static void exit(){
-		Platform.exit();
-	}
-
 }
