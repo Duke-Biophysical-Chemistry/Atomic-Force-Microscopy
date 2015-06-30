@@ -1,7 +1,4 @@
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -32,7 +30,8 @@ public class AFMController extends AFMMain implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		/*
+		/*Access point for FXML injection
+		 * 
 		 * Initialize Buttons:
 		 * 
 		 * ExitButton
@@ -51,6 +50,7 @@ public class AFMController extends AFMMain implements Initializable {
 		AFMMain.stage.setResizable(false);
 
 	}
+
 	/*
 	 * Set logic for buttons
 	 */
@@ -100,13 +100,22 @@ public class AFMController extends AFMMain implements Initializable {
 	//changes shape of tip via modal dialog
 	private void modalChangeShapeDialog(){
 		//TODO: Implement modal dialog w/ flowpane
-		System.out.println("Not Implemented");
+		ShapeChooser chooser = new ShapeChooser();
+		try {
+			Stage popup = new Stage();
+			popup.initModality(Modality.APPLICATION_MODAL);
+			popup.initOwner(stage.getScene().getWindow());
+			chooser.start(popup);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//begins the AFM sequence
 	private void run(){
 		//TODO: Implement running algorithm
-		System.out.println("Should run when implemented");
+		this.getTrack().getTip().startTransition();
+		System.out.println("run hit");
 	}
 
 	/*
@@ -114,13 +123,7 @@ public class AFMController extends AFMMain implements Initializable {
 	 */
 
 	private void directToCourseSite(){
-		try{
-			URI courseSite = new URI("www.sakai.duke.edu");
-			Desktop.getDesktop().browse(courseSite);
-		} catch (IOException | URISyntaxException e) {
-			System.err.println("Cannot access AWT thread / default browser");
-			e.printStackTrace();
-		}
+		String courseSite = new String("https://sakai.duke.edu");
+		getHostServices().showDocument(courseSite);
 	}
-
 }
