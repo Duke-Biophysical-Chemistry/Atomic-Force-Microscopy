@@ -5,7 +5,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -17,8 +16,11 @@ import javafx.scene.control.MenuItem;
 
 public class AFMController extends AFMMain implements Initializable {
 
-	public static final double HEIGHT = 371;
-	public static final double WIDTH = 636;
+	public static final double CONTENT_HEIGHT = 371;
+	public static final double CONTENT_WIDTH = 636;
+	
+	public static final double CANVAS_HEIGHT = 178;
+	public static final double CANVAS_WIDTH = 629;
 	
 	@FXML
 	public Menu fileMenu, helpMenu;
@@ -42,11 +44,6 @@ public class AFMController extends AFMMain implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
-		/**
-		 * INIT BUTTONS
-		 */
-		initButtons();
 		
 	}
 	
@@ -83,6 +80,10 @@ public class AFMController extends AFMMain implements Initializable {
 
 	public void begin(){
 		super.begin();
+	}
+	
+	public void changeShapes(){
+		super.changeShapes();
 	}
 	
 	public void cancelRun(){

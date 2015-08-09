@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -16,6 +17,7 @@ public class AFMMain extends Application {
 	public static VBox root;
 	public static Stage stage;
 	public static AnchorPane splash;
+	public static ShapeEnum shapetype = ShapeEnum.triangle;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -66,6 +68,20 @@ public class AFMMain extends Application {
 	public void showSplash(){
 		setContent(splash);
 	}
+	
+	public void changeShapes(){
+		Stage modalDialog = new Stage();
+		modalDialog.initModality(Modality.APPLICATION_MODAL);
+		try {
+			modalDialog.setScene(FXMLLoader.load(getClass().getResource("AFMShapeChooser.fxml")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		modalDialog.show();
+	}
+	
+	public ShapeEnum getShapeType(){return shapetype;}
+	public void setShapeType(ShapeEnum e){shapetype = e;}
 
 	public void setContent(Pane content){
 		Platform.runLater(()->{
