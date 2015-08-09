@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AFMController">
+   <children>
+      <Button fx:id="SaveRun" layoutX="319.0" layoutY="337.0" mnemonicParsing="false" onAction="#saveRun" prefHeight="26.0" prefWidth="300.0" text="Save" />
+      <Button fx:id="CancelRun" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onAction="#cancelRun" prefHeight="26.0" prefWidth="300.0" text="Cancel" />
+      <ScatterChart fx:id="Chart" layoutX="-4.0" layoutY="166.0" prefHeight="178.0" prefWidth="636.0">
+        <xAxis>
+          <CategoryAxis label="\% complete" prefHeight="18.0" prefWidth="603.0" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" tickLabelsVisible="false" tickMarkVisible="false" />
+        </yAxis>
+      </ScatterChart>
+      <Canvas fx:id="Canvas" height="178.0" layoutX="4.0" width="629.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AFMController">
+  <children>
+    <MenuBar prefHeight="29.0" prefWidth="635.0" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem fx:id="restartItem" mnemonicParsing="false" onAction="#restart" text="Restart" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="quitItem" mnemonicParsing="false" onAction="#exit" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem fx:id="courseSite" mnemonicParsing="false" onAction="#goToCourseSite" text="Course Website" />
+                  <MenuItem fx:id="viewSourceCode" mnemonicParsing="false" onAction="#goToSourceCode" text="View Source Code" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </children>
+</VBox>

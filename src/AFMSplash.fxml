@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="371.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AFMController">
+   <children>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="21.0" prefWidth="624.0" style="&#10;" text="Welcome to CHEM301 BioPhysicalChemistry Atomic Force Microscopy Viewer" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="startButton" defaultButton="true" layoutX="294.0" layoutY="331.0" mnemonicParsing="false" onAction="#begin" prefHeight="26.0" prefWidth="258.0" text="Start" />
+      <Button fx:id="exitButton" cancelButton="true" layoutX="36.0" layoutY="331.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="258.0" text="Exit" />
+      <Label layoutX="20.0" layoutY="37.0" text="Select Tip Type and Size">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="186.0" text="Select Track Options">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Group fx:id="tipGroup" layoutX="20.0" layoutY="-1.0">
+         <children>
+            <Label layoutY="153.0" text="Tip Shape (Click to Change)" />
+            <ImageView fitHeight="57.0" fitWidth="66.0" layoutX="49.0" layoutY="86.0" rotate="180.0">
+               <image>
+                  <Image url="@Images/Triangle.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
