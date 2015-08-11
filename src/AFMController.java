@@ -1,3 +1,6 @@
+
+
+
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -5,14 +8,16 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.BorderPane;
 
 public class AFMController extends AFMMain implements Initializable {
 
@@ -29,10 +34,13 @@ public class AFMController extends AFMMain implements Initializable {
 	public MenuItem restartItem, quitItem, courseSite, About;
 	
 	@FXML
-	public Group tipGroup;
+	public BorderPane tipPane;
 	
 	@FXML
 	public ScatterChart Chart;
+	
+	@FXML
+	public ImageView initialTip;
 	
 	@FXML
 	public javafx.scene.canvas.Canvas Canvas;
@@ -44,11 +52,17 @@ public class AFMController extends AFMMain implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	public void initButtons(){
 		
+	}
+	
+	public void setInitialTipImage(WritableImage image, double width){
+		Platform.runLater(()->{
+			AFMMain.initialTipSelection.setImage(image);
+			AFMMain.initialTipSelection.setFitWidth(width);
+		});
 	}
 	
 	public void goToSite(String site){
@@ -83,6 +97,7 @@ public class AFMController extends AFMMain implements Initializable {
 	}
 	
 	public void changeShapes(){
+		System.out.println("Clicked");
 		super.changeShapes();
 	}
 	

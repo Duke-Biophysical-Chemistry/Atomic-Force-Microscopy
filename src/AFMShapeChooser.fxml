@@ -9,22 +9,22 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane hgap="14.0" maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="572.0" vgap="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShapeChooserController">
+<GridPane hgap="14.0" maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="234.0" prefWidth="572.0" vgap="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShapeChooserController">
   <children>
-      <VBox>
-         <children>
-            <Label text="Current Selection" />
-          <ImageView fx:id="currentSelection" fitHeight="106.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="TOP">
-            <image>
-        <!-- place holder -->
-      </image>
-          </ImageView>
-            <Label text="Triangle" />
-         </children>
-      </VBox>
+      <BorderPane prefHeight="153.0" prefWidth="112.0" GridPane.rowSpan="2">
+         <center>
+            <ImageView fx:id="currentSelectionImage" fitHeight="119.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="currentSelectionLabel" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="16.0" prefWidth="105.0" text="Triangle" BorderPane.alignment="CENTER" />
+         </bottom>
+         <top>
+            <Label prefHeight="32.0" prefWidth="106.0" text="Current Selection" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
     <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefWidth="400.0" spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
       <children>
-        <Label fx:id="messageLabel" text="Choose shape from options" textAlignment="LEFT" wrapText="true">
+        <Label fx:id="messageLabel" text="Choose a shape" textAlignment="LEFT" wrapText="true">
           <font>
             <Font name="System Bold" size="13.0" />
           </font>
@@ -40,21 +40,50 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" />
+                  <BorderPane onMouseClicked="#deltaFunctionOnAction" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                     <bottom>
+                        <Label alignment="BOTTOM_CENTER" prefHeight="16.0" prefWidth="105.0" text="Delta Function" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <ImageView fx:id="IVDeltaFunction" fitHeight="119.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane onMouseClicked="#tallRectangleOnAction" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                     <bottom>
+                        <Label alignment="BOTTOM_CENTER" prefHeight="16.0" prefWidth="105.0" text="Tall Rectangle" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <ImageView fx:id="IVTallRectangle" fitHeight="119.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane onMouseClicked="#circleOnAction" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <bottom>
+                        <Label alignment="BOTTOM_CENTER" prefHeight="16.0" prefWidth="105.0" text="Circle" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <ImageView fx:id="IVCircle" fitHeight="119.0" fitWidth="91.0" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane fx:id="TriangleBorderPane" onMouseClicked="#triangleOnAction" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <ImageView fx:id="IVTriangle" fitHeight="119.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="16.0" prefWidth="105.0" text="Triangle" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
                </children>
             </GridPane>
       </children>
     </VBox>
-    <HBox maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2">
-      <children>
-        <HBox fx:id="okParent" alignment="CENTER" />
-      </children>
-    </HBox>
-  <Button fx:id="cancelButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false" text="Cancel" GridPane.rowIndex="1" />
-<Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" text="Ok" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <HBox prefHeight="68.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Pane prefHeight="26.0" prefWidth="96.0" />
+            <Button fx:id="cancelButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false" onAction="#close" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Pane prefHeight="26.0" prefWidth="105.0" />
+            <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" onAction="#ok" text="Ok" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </HBox>
   </children>
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" />
@@ -64,8 +93,7 @@
     <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
   </padding>
   <rowConstraints>
-    <RowConstraints maxHeight="Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="ALWAYS" />
-    <RowConstraints maxHeight="Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+    <RowConstraints maxHeight="Infinity" minHeight="-Infinity" prefHeight="164.0" valignment="CENTER" vgrow="ALWAYS" />
+    <RowConstraints maxHeight="Infinity" minHeight="-Infinity" prefHeight="22.0" valignment="CENTER" vgrow="ALWAYS" />
   </rowConstraints>
 </GridPane>

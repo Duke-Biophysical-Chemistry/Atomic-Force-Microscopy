@@ -1,15 +1,19 @@
+
+
 import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import Constants.ShapeType;
 
 
 public class AFMMain extends Application {
@@ -17,7 +21,14 @@ public class AFMMain extends Application {
 	public static VBox root;
 	public static Stage stage;
 	public static AnchorPane splash;
-	public static ShapeEnum shapetype = ShapeEnum.triangle;
+	public int shapetype = ShapeType.triangle;
+	public static Stage popupStage;
+	
+	/*
+	 * Handles to values that need to be kept from different AFMController initializations
+	 * All
+	 */
+	public static ImageView initialTipSelection;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -60,28 +71,33 @@ public class AFMMain extends Application {
 			exit();
 		}
 	}
-	
+
 	public void cancelRun(){
 		showSplash();
 	}
-	
+
 	public void showSplash(){
 		setContent(splash);
 	}
-	
+
+	/*Starts the changeShapes dialog. ShapeChooserController is then used to change the current shape.*/
 	public void changeShapes(){
-		Stage modalDialog = new Stage();
-		modalDialog.initModality(Modality.APPLICATION_MODAL);
+		popupStage = new Stage();
+		popupStage.initModality(Modality.APPLICATION_MODAL);
 		try {
-			modalDialog.setScene(FXMLLoader.load(getClass().getResource("AFMShapeChooser.fxml")));
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("AFMShapeChooser.fxml")));
+			popupStage.setScene(scene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		modalDialog.show();
+		popupStage.showAndWait();
 	}
-	
-	public ShapeEnum getShapeType(){return shapetype;}
-	public void setShapeType(ShapeEnum e){shapetype = e;}
+	public void closePopup(){
+		popupStage.close();
+	}
+
+	public int getShapeType(){return shapetype;}
+	public void setShapeType(int e){shapetype = e;}
 
 	public void setContent(Pane content){
 		Platform.runLater(()->{
