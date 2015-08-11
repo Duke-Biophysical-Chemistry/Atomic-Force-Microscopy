@@ -7,15 +7,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="371.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SplashController">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="364.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SplashController">
    <children>
       <Label alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="21.0" prefWidth="624.0" style="&#10;" text="Welcome to CHEM301 BioPhysicalChemistry Atomic Force Microscopy Viewer" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" defaultButton="true" layoutX="294.0" layoutY="331.0" mnemonicParsing="false" onAction="#begin" prefHeight="26.0" prefWidth="258.0" text="Start" />
-      <Button fx:id="exitButton" cancelButton="true" layoutX="36.0" layoutY="331.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="258.0" text="Exit" />
+      <HBox layoutX="35.0" layoutY="331.0">
+         <children>
+            <Button fx:id="exitButton" cancelButton="true" layoutX="36.0" layoutY="331.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="258.0" text="Exit" />
+            <Pane prefHeight="26.0" prefWidth="52.0" />
+            <Button fx:id="startButton" defaultButton="true" layoutX="294.0" layoutY="331.0" mnemonicParsing="false" onAction="#begin" prefHeight="26.0" prefWidth="258.0" text="Start" />
+         </children>
+      </HBox>
       <Label layoutX="14.0" layoutY="119.0" text="Select Tip Type and Size">
          <font>
             <Font size="17.0" />

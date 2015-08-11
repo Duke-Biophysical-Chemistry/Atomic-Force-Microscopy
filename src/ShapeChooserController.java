@@ -74,6 +74,8 @@ Initializable {
 		Platform.runLater(()->{
 			currentSelectionLabel.setText(shapeNames[type]);
 			currentSelectionImage.setImage(shapetypeToImage(type));
+			currentSelectionImage.setFitHeight(DimensionConstants.getHeight(type));
+			currentSelectionImage.setFitWidth(DimensionConstants.getWidth(type));
 		});
 	}
 
@@ -93,27 +95,23 @@ Initializable {
 
 	public void ok(){
 		int type = ShapeType.triangle;
-		double newWidth = 0.0d;
 		switch(currentSelectionLabel.getText()){
 		case "Triangle": 
 			type = ShapeType.triangle;
-			newWidth = DimensionConstants.AllOtherWidths;
 			break;
 		case "Circle":
 			type = ShapeType.circle;
-			newWidth = DimensionConstants.AllOtherWidths;
 			break;
 		case "Tall Rectangle":
 			type = ShapeType.tallRectangle;
-			newWidth = DimensionConstants.AllOtherWidths;
 			break;
 		case "Delta Function":
 			type = ShapeType.delta;
-			newWidth = DimensionConstants.DeltaWidth;
 			break;
 		}
+		//inherited from AFMMain 
 		setShapeType(type);
-		setInitialTipImage(shapetypeToImage(type), newWidth);
+		setInitialTipImage(shapetypeToImage(type), DimensionConstants.getWidth(type), DimensionConstants.getHeight(type));
 		close();
 	}
 
