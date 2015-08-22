@@ -13,12 +13,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Constants.DimensionConstants;
 import Constants.ShapeType;
+import Shapes.ObjectStrut;
+import Shapes.SmoothTrack;
 
 
 public class AFMMain extends Application {
@@ -79,23 +82,77 @@ public class AFMMain extends Application {
 			return;
 		}
 		System.out.println("Loading resources");
-		loadShape();
 		loadTrack();
+		loadShape();
 		loadScatter();
 	}
 	public void loadShape(){
 		Shape currentShape = ShapeType.getShapeFromShapetype(shapetype);
 		currentShape.setLayoutX(DimensionConstants.initialX);
 		double initialY = DimensionConstants.getInitialY(shapetype);
-		currentShape.setLayoutY(initialY);
+		/*
+		 * nestles shape neatly on track since getInitialY is used for both
+		 * assembling track and placing shape. 
+		 */
+		double reconciledY = initialY + (DimensionConstants.reconcileHeight(shapetype));
+		currentShape.setLayoutY(reconciledY);
 		currentShape.setFill(Color.RED);
 		runPane.getChildren().add(currentShape);
+//		System.out.println(currentShape.getLayoutBounds().getWidth());
+//		System.out.println(currentShape.getLayoutBounds().getHeight());
 	}
 	public void loadTrack(){
+		if(DimensionConstants.isRough){
+			loadRoughTrack();
+		}
+		else{
+			loadSmoothTrack();
+		}
+	}
+	
+	private void loadRoughTrack(){
 		
 	}
-	public void loadScatter(){
+	
+	private void loadSmoothTrack(){
+		//define constants
 		
+		//init smooth track
+		final double initY = DimensionConstants.getInitialY(shapetype) + DimensionConstants.getShapeHeight(shapetype);
+		final double trackWidth = DimensionConstants.PANE_WIDTH-DimensionConstants.getInitialX(shapetype);
+		final double smoothDistance = trackWidth - DimensionConstants.getObjectWidth();
+		final double individualTrackLength = smoothDistance/2d;
+		
+		//calculate smooth track parameters
+		final double leftInitX = DimensionConstants.getInitialX(shapetype);
+		final double rightInitX = DimensionConstants.getInitialX(shapetype) + 
+				+ individualTrackLength + DimensionConstants.getObjectWidth();
+		final Color trackColor = Color.DIMGRAY;
+		
+		//init object top
+		final double topWidth = DimensionConstants.getObjectWidth() + DimensionConstants.trackDepth;
+		final double topInitX = leftInitX + individualTrackLength;
+		final double topInitY = initY - DimensionConstants.getObjectHeight();
+		final Color topColor = Color.LIGHTCORAL;
+		
+		//init object struts
+		final double strutHeight = DimensionConstants.getObjectHeight();
+		final double leftStrutInitX = leftInitX + individualTrackLength;
+		final double rightStrutInitX = leftInitX + individualTrackLength + DimensionConstants.getObjectWidth();
+		final double strutInitY = initY - strutHeight + DimensionConstants.trackDepth;
+		final Color strutColor = topColor;
+
+		//construct track, struts, and top
+		final Rectangle leftTrack = new SmoothTrack(leftInitX, initY, individualTrackLength,DimensionConstants.trackDepth, trackColor);
+		final Rectangle rightTrack = new SmoothTrack(rightInitX, initY, individualTrackLength, DimensionConstants.trackDepth, trackColor);
+		final Rectangle top = new SmoothTrack(topInitX, topInitY, topWidth, DimensionConstants.trackDepth, topColor);
+		final Rectangle leftObjectStrut = new ObjectStrut(leftStrutInitX, strutInitY, DimensionConstants.trackDepth, strutHeight, strutColor);
+		final Rectangle rightObjectStrut = new ObjectStrut(rightStrutInitX, strutInitY, DimensionConstants.trackDepth, strutHeight, strutColor);
+		runPane.getChildren().addAll(leftTrack, rightTrack, top, leftObjectStrut, rightObjectStrut);
+	}
+	
+	public void loadScatter(){
+		final double delta = 0.1; //scatter point increment value
 	}
 	
 	public void beginRun(){

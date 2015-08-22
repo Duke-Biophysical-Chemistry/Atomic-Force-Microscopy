@@ -1,5 +1,6 @@
 package Shapes;
 
+import Constants.ShapeType;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
@@ -16,8 +17,8 @@ public class Triangle extends javafx.scene.shape.Polygon {
 				30.0,0.0,
 				15.0,30.0
 		});
-		setFill(Color.GREEN);
-		setStroke(Color.BLACK);
+		setFill(ShapeType.SHAPE_COLOR);
+		setStroke(ShapeType.SHAPE_COLOR);
 	}
 	
 	public WritableImage getImage(){

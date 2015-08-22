@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -28,13 +29,16 @@ Initializable {
 
 	@FXML
 	public StackPane DeltaStackPane;
-
-	private String[] shapeNames = new String[]{"Triangle", "Circle", "Tall Rectangle", "Delta Function"};
+	
+	@FXML
+	public Button okButton;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		initShapes();
+		okButton.setDefaultButton(true);
+		
 	}
 
 	public void initShapes(){
@@ -51,6 +55,8 @@ Initializable {
 
 
 	public void close(){
+		//reset default due to okButton consuming all ENTER presses
+		super.startButton.setDefaultButton(true);
 		super.closePopup();
 	}
 
@@ -72,10 +78,10 @@ Initializable {
 
 	public void setSelectedShape(int type){
 		Platform.runLater(()->{
-			currentSelectionLabel.setText(shapeNames[type]);
+			currentSelectionLabel.setText(ShapeType.SHAPE_NAMES[type]);
 			currentSelectionImage.setImage(shapetypeToImage(type));
-			currentSelectionImage.setFitHeight(DimensionConstants.getHeight(type));
-			currentSelectionImage.setFitWidth(DimensionConstants.getWidth(type));
+			currentSelectionImage.setFitHeight(DimensionConstants.getImageHeight(type));
+			currentSelectionImage.setFitWidth(DimensionConstants.getImageWidth(type));
 		});
 	}
 
@@ -111,7 +117,7 @@ Initializable {
 		}
 		//inherited from AFMMain 
 		setShapeType(type);
-		setInitialTipImage(shapetypeToImage(type), DimensionConstants.getWidth(type), DimensionConstants.getHeight(type));
+		setInitialTipImage(shapetypeToImage(type), DimensionConstants.getImageWidth(type), DimensionConstants.getImageHeight(type));
 		close();
 	}
 

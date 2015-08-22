@@ -24,7 +24,7 @@
       </BorderPane>
     <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefWidth="400.0" spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
       <children>
-        <Label fx:id="messageLabel" text="Choose a shape" textAlignment="LEFT" wrapText="true">
+        <Label fx:id="messageLabel" text="Click to choose a shape" textAlignment="LEFT" wrapText="true">
           <font>
             <Font name="System Bold" size="13.0" />
           </font>

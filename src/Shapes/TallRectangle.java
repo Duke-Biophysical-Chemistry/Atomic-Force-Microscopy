@@ -1,5 +1,6 @@
 package Shapes;
 
+import Constants.ShapeType;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
@@ -15,8 +16,8 @@ public class TallRectangle extends javafx.scene.shape.Rectangle {
 		
 		super(WIDTH, HEIGHT);
 		
-		setFill(Color.GREEN);
-		setStroke(Color.BLACK);
+		setFill(ShapeType.SHAPE_COLOR);
+		setStroke(ShapeType.SHAPE_COLOR);
 	}
 	
 	public WritableImage getImage(){

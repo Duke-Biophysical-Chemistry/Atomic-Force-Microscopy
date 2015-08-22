@@ -1,5 +1,6 @@
 package Shapes;
 
+import Constants.ShapeType;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
@@ -8,14 +9,13 @@ import javafx.scene.paint.Color;
 public class Circle extends javafx.scene.shape.Circle {
 
 	public static final Double scaleFactor = 4.0d;
-	public static final Double RADIUS = 15d;
+	
 	
 	public Circle(){
 		
-		super(RADIUS);
-		
-		setFill(Color.GREEN);
-		setStroke(Color.BLACK);
+		super(ShapeType.CIRCLE_RADIUS);
+		setFill(ShapeType.SHAPE_COLOR);
+		setStroke(ShapeType.SHAPE_COLOR);
 	}
 	
 	public WritableImage getImage(){

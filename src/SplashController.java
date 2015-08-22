@@ -15,10 +15,12 @@ public class SplashController extends AFMController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		setInitialTipImage(new Triangle().getImage(), DimensionConstants.getWidth(ShapeType.triangle),
-				DimensionConstants.getHeight(ShapeType.triangle));
-		AFMMain.initialTipSelection = initialTip;
-		
-		Platform.runLater(()->{	startButton.requestFocus();});
+		setInitialTipImage(new Triangle().getImage(), DimensionConstants.getImageWidth(ShapeType.triangle),
+				DimensionConstants.getImageHeight(ShapeType.triangle));
+		AFMMain.initialTipSelection = initialTip;	
+		Platform.runLater(()->{	
+			startButton.requestFocus();
+			startButton.setDefaultButton(true);
+		});
 	}
 }
